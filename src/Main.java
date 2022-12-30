@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         //==============================================================
@@ -37,7 +37,7 @@ public class Main {
         }
         //==============================================================
         System.out.println("EX4:");
-        int sizes = 1;
+        int sizes = 10;
         int symbolP = 0;
         int symbolN = sizes-1;
         for(int i = 0; i < sizes ; i++ ){
@@ -194,26 +194,23 @@ public class Main {
         int arrSize = 50;
         int[] arr50 = new int[arrSize];
         boolean isDone = true;
-        for(int i = 0;i<50;)
-        {
-            isDone=true;
-            while(isDone)
-            {
-                for(int j=0;j<i;j++)
-                {
-                    if(arr50[j]==arr50[i])
-                    {
-                        isDone=false;
-                    }
+        for(int i = 0;i<arrSize;i++) {
+            arr50[i]=(int) Math.round(Math.random()*199+1);
+            for(int j=0;j<i;j++) {
+                if(arr50[j]==arr50[i]) {
+                    isDone=false;
+                    arr50[i]=(int) Math.round(Math.random()*199+1);
+                    i--;
+                    continue;
                 }
-                arr50[i]=(int) Math.round(Math.random()*199+1);
-
             }
 
-            i++;
         }
-
-
+        Arrays.sort(arr50);
+        for(int i = 0;i<arrSize;i++) {
+            System.out.print(arr50[i]+", ");
+            if(i%10==0&&i!=0) System.out.println();
+        }
     }
 
 }
